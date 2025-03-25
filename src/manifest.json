@@ -1,6 +1,6 @@
 {
   "name": "Lanraragi 元數據助手",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "description": "幫助自動更新本地漫畫服務的元數據",
   "permissions": [
@@ -20,5 +20,6 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "options_page": "options.html"
 }

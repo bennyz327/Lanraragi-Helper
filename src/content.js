@@ -300,36 +300,36 @@ function injectFeedbackUI() {
 
 // 檢測是否為您的漫畫服務頁面
 function isLocalMangaService() {
-  return window.location.hostname.includes('stackoverflow');
-  // 實際使用時請修改為您的漫畫服務網址特徵
-  // return window.location.hostname.includes('localhost') && 
-  //        window.location.pathname.includes('/manga') || 
-  //        window.location.hostname.includes('您的漫畫服務域名');
+  return window.location.hostname.includes('localhost') && 
+		 window.location.pathname.includes('/edit') || 
+         window.location.hostname.includes('您的漫畫服務域名');
 }
 
-// 檢測是否為目標網站A
+// 檢測是否為目標網站
 function isWebsiteA() {
-  return window.location.hostname.includes('v2ex');
-  // 實際使用時請修改為網站A的網址特徵
-  // return window.location.hostname.includes('網站A的域名');
+  return window.location.hostname.includes('exhentai.org');
 }
 
 // 檢測是否為網站A的單一漫畫頁面
 function isSingleMangaPageOnWebsiteA() {
   // 根據網站A的單一漫畫頁面網址特徵進行判斷
-  return isWebsiteA() && 
-         (window.location.pathname.includes('/manga/') || 
-          window.location.pathname.match(/\/[0-9]+$/));
+  //return isWebsiteA() && 
+  //       (window.location.pathname.includes('/manga/') || 
+  //        window.location.pathname.match(/\/[0-9]+$/));
+  return isWebsiteA() && /^\/g\/\d+\/[0-9a-f]+\/?$/i.test(window.location.pathname);
 }
 
 // 從URL中提取漫畫ID
 function extractMangaIdFromUrl() {
-  // 示例的提取邏輯，請根據實際URL格式修改
-  const match = window.location.pathname.match(/\/questions\/(\d+)/);
-  if (match && match[1]) {
-    return match[1];
-  }
-  return null;
+  //const match = window.location.pathname.match(/\/edit?(\d+)$/);
+  //if (match && match[1]) {
+  //  return match[1];
+  //}
+  //return null;
+  
+  const params = new URL(window.location.href).searchParams;
+  const id = params.get('id');
+  return id;
 }
 
 // 設置事件監聽器
@@ -347,8 +347,6 @@ function setupEventListeners() {
         }
       });
     }
-    
-    // 本地服務頁面的事件
     if (isLocalMangaService()) {
       // 搜索按鈕點擊事件
       const searchButton = document.getElementById('search-website-button');
@@ -357,7 +355,7 @@ function setupEventListeners() {
           const keyword = document.getElementById('search-keyword-input').value.trim();
           if (keyword) {
             // 構建搜索URL並跳轉
-            const searchUrl = `https://網站A的域名/search?q=${encodeURIComponent(keyword)}`;
+            const searchUrl = `https://exhentai.org/favorites.php?favcat=all&f_search=${encodeURIComponent(keyword)}`;
             window.open(searchUrl, '_blank');
           } else {
             alert('請輸入搜索關鍵字');

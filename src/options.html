@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>設定 — Lanraragi 元數據助手</title>
+<style>
+  body { font-family: sans-serif; padding: 1rem; }
+  label, input { display: block; margin: .5rem 0; width: 100%; }
+  button { margin-top: 1rem; }
+</style>
+</head>
+<body>
+  <h1>擴充設定</h1>
+  <label>Lanraragi URL
+    <input id="lanraragiUrl" type="url" placeholder="http://localhost:3500">
+  </label>
+  <label>API Key
+    <input id="apiKey" type="text" placeholder="輸入你的 API Key">
+  </label>
+  <button id="saveBtn">儲存設定</button>
+  <p id="status"></p>
+
+  <script src="options.js"></script>
+</body>
+</html>
