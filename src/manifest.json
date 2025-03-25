@@ -1,0 +1,24 @@
+{
+  "name": "Lanraragi 元數據助手",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "幫助自動更新本地漫畫服務的元數據",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost:*/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
