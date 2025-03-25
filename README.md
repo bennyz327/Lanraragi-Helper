@@ -39,7 +39,7 @@ Lanraragi 元數據助手是一個瀏覽器擴展，旨在幫助用戶自動更�
 ### 介面預覽
 
 ![screen1.png](screen1.png)
-![screen1.png](screen2.png)
+![screen2.png](screen.png)
 
 ## 隱私說明
 
